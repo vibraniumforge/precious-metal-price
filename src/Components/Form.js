@@ -8,6 +8,7 @@ class Form extends React.Component {
           <div>
             <select
               name="select1"
+              className=" mb-2"
               value={this.props.metalChoice}
               onChange={this.props.handleMetalChange}
             >
@@ -16,6 +17,13 @@ class Form extends React.Component {
               <option value="Platinum">Platinum</option>
               <option value="Palladium">Palladium</option>
             </select>
+            <button
+              type="button"
+              className="btn-danger mb-2"
+              onClick={this.props.calculate}
+            >
+              <h4>Calculate</h4>
+            </button>
           </div>
           <div className="form-group">
             <input
@@ -30,21 +38,13 @@ class Form extends React.Component {
             <input
               type="number"
               placeholder="Enter today's price"
-              id="price"
+              id="priceInput"
               className="form-control form-control-lg"
               value={this.props.price}
               onChange={this.props.handlePriceChange}
             />
           </div>
-          <div>
-            <button
-              type="button"
-              className="btn-danger mb-2"
-              onClick={this.props.calculate}
-            >
-              <h4>Calculate</h4>
-            </button>
-          </div>
+          <div />
         </form>
         <br />
       </React.Fragment>

@@ -10,16 +10,16 @@ class App extends Component {
       amount: 1,
       price: 1189.12,
       metalChoice: "Gold",
-      priceInGrams: "",
-      priceInImperialOz: "",
-      priceInPounds: "",
-      priceInKilograms: "",
-      priceInUKStone: "",
-      priceInBars: "",
-      priceInUSTons: "",
-      priceInMetricTons: "",
-      priceInImperialTons: "",
-      goldPrice: "1189.12",
+      priceInGrams: 0,
+      priceInImperialOz: 0,
+      priceInPounds: 0,
+      priceInKilograms: 0,
+      priceInUKStones: 0,
+      priceInBars: 0,
+      priceInUSTons: 0,
+      priceInMetricTons: 0,
+      priceInImperialTons: 0,
+      goldPrice: 1189.12,
       silverPrice: "",
       platinumPrice: "",
       palladiumPrice: "",
@@ -68,7 +68,7 @@ class App extends Component {
   // }
 
   handlePriceChange = e => {
-    this.setState({ price: e.target.value });
+    this.setState({ price: parseFloat(e.target.value) });
   };
 
   handleAmountChange = e => {
@@ -77,39 +77,22 @@ class App extends Component {
 
   handleMetalChange = e => {
     this.setState({ metalChoice: e.target.value });
+    // document.getElementById("main").classList.add("gold");
   };
 
   calculate = () => {
     this.setState({
-      priceInGrams: parseFloat(this.state.price * 0.032, 10)
-        .toFixed(2)
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-      priceInImperialOz: parseFloat(this.state.price * 0.911, 10)
-        .toFixed(2)
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-      priceInPounds: parseFloat(this.state.price * 14.583, 10)
-        .toFixed(2)
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-      priceInKilograms: parseFloat(this.state.price * 32.151, 10)
-        .toFixed(2)
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-      priceInUKStones: parseFloat(this.state.price * 204.167, 10)
-        .toFixed(2)
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-      priceInBars: parseFloat(this.state.price * 400, 10)
-        .toFixed(2)
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-      priceInUSTons: parseFloat(this.state.price * 29166.667, 10)
-        .toFixed(2)
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-      priceInMetricTons: parseFloat(this.state.price * 32150.747, 10)
-        .toFixed(2)
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-      priceInImperialTons: parseFloat(this.state.price * 32666.667, 10)
-        .toFixed(2)
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+      priceInGrams: (this.state.price * 0.032).toFixed(2),
+      priceInImperialOz: (this.state.price * 0.911).toFixed(2),
+      priceInPounds: (this.state.price * 14.583).toFixed(2),
+      priceInKilograms: (this.state.price * 32.151).toFixed(2),
+      priceInUKStones: (this.state.price * 204.167).toFixed(2),
+      priceInBars: (this.state.price * 400).toFixed(2),
+      priceInUSTons: (this.state.price * 29166.667).toFixed(2),
+      priceInMetricTons: (this.state.price * 32150.747).toFixed(2),
+      priceInImperialTons: (this.state.price * 32666.667).toFixed(2)
 
-      totalPrice: this.state.amount * this.state.price
+      // totalPrice: this.state.amount * this.state.price
     });
   };
 
@@ -137,12 +120,12 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="container">
+        <div id="main" className="container">
           <div className="row">
             <div className="col-md-6 offset-md-3">
-              <h1 className="display-6 text-center mb-3">
+              <h2 className="display-6 text-center mb-3">
                 Precious Metal Price Converter
-              </h1>
+              </h2>
               <Form
                 metalChoice={this.state.metalChoice}
                 amount={this.state.amount}
