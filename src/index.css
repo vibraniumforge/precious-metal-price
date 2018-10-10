@@ -1,0 +1,15 @@
+body {
+  margin-top: 70px;
+  background: #333;
+  color: white;
+  text-align: center;
+  background-image: url("./gold2.jpg");
+}
+
+input {
+  margin-top: 10px;
+}
+
+button {
+  font-size: 16px;
+}
