@@ -95,6 +95,26 @@ class ResultCards extends React.Component {
               </div>
             </div>
           </div>
+          <div className="card bg-info mb-2">
+            <div className="card-block">
+              <div id="userWeightOutput">
+                <span>
+                  <h4>
+                    Your weight{" "}
+                    {(this.props.userWeight === 0 || ""
+                      ? ""
+                      : `(${this.props.userWeight} pounds) `
+                    ).toLocaleString()}{" "}
+                    in {this.props.metalChoice}: $
+                    {(this.props.priceInUserWeight === 0 || ""
+                      ? ""
+                      : this.props.priceInUserWeight * 1
+                    ).toLocaleString()}
+                  </h4>
+                </span>
+              </div>
+            </div>
+          </div>
           <div className="card bg-danger mb-2">
             <div className="card-block">
               <div id="usTonOutput">
@@ -140,6 +160,20 @@ class ResultCards extends React.Component {
                     {(
                       this.props.priceInImperialTons * this.props.amount
                     ).toLocaleString()}
+                  </h4>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="card bg-secondary mb-2">
+            <div className="card-block">
+              <div id="ratio">
+                <span>
+                  <h4>
+                    Ratio of Gold to Silver:{" "}
+                    {(this.props.price.Gold / this.props.price.Silver).toFixed(
+                      2
+                    )}
                   </h4>
                 </span>
               </div>

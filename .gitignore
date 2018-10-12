@@ -22,3 +22,5 @@ yarn-error.log*
 
 # VSCode
 .vscode/settings.json
+
+scrape.md

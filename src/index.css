@@ -3,7 +3,7 @@ body {
   background: #333;
   color: white;
   text-align: center;
-  background-image: url("./Media/gold2.jpg");
+  /* background-image: url("./Media/gold3.jpg"); */
 }
 
 input {
@@ -16,8 +16,17 @@ button {
 }
 
 .gold {
-  background-image: url("./Media/gold2.jpg");
+  background-image: url("./Media/gold3.jpg");
 }
+
 .silver {
   background-image: url("./Media/silver.jpg");
+}
+
+.platinum {
+  background-image: url("./Media/platinum.png");
+}
+
+.palladium {
+  background-image: url("./Media/Gold-and-Silver-Bullion-Bars-Ingots-Coins-and-Gold-Rings.jpg");
 }
