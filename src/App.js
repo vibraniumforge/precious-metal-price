@@ -2,20 +2,24 @@ import React, { Component } from "react";
 // import $ from "jquery";
 import ResultCards from "./Components/ResultCards";
 import Form from "./Components/Form";
-// import Gold from "./Media/gold3.jpg";
-// import Silver from "./Media/silver.jpg";
-// import Platinum from "./Media/platinum.png";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // price: {
+      //   Gold: 1224.67,
+      //   Silver: 14.6,
+      //   Platinum: 846.75,
+      //   Palladium: 1086.45
+      // },
       price: {
-        Gold: 1224.67,
-        Silver: 14.6,
-        Platinum: 846.75,
-        Palladium: 1086.45
+        Gold: 0,
+        Silver: 0,
+        Platinum: 0,
+        Palladium: 0
       },
+      goldPrice: 0,
       metalChoice: "Gold",
       amount: "",
       userWeight: "",
@@ -39,6 +43,36 @@ class App extends Component {
   componentDidMount() {
     document.body.classList.add("gold");
     document.body.classList.remove("silver", "platinum", "palladium");
+    fetch(
+      "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&" +
+        "from_currency=XAU&to_currency=USD&apikey=9ISBCG500FVCKBG6"
+    )
+      // .then(res => console.log(res))
+      .then(res => res.json())
+
+      // .then(res => console.log(Object.values(res)))
+      // .then(data => console.log(Object.values(data)))
+
+      .then(res => {
+        let values = Object.values(res);
+        console.log("values=", values);
+        console.log("values=array", Array.isArray(values));
+        console.log("type of values=", typeof values[0]);
+        console.log("Object.values(values[0])=", Object.values(values[0]));
+        let myVal = Object.values(values[0]);
+        console.log("myVal[4]=", parseFloat(myVal[4]));
+        this.setState(
+          {
+            price: {
+              ...this.state.price,
+              Gold: myVal[4]
+            }
+          },
+          console.log(this.state.price.Gold)
+        );
+        // this.setState({ goldPrice: myVal[4] }, this.calculate);
+      })
+      .catch(err => console.log(err));
   }
 
   handleAmountChange = e => {
@@ -93,6 +127,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state.goldPrice);
     return (
       <React.Fragment>
         <div id="main" className="container">
