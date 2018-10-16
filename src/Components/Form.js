@@ -8,7 +8,7 @@ class Form extends React.Component {
           <div>
             <select
               name="select"
-              className=" mb-2"
+              className="select mb-2"
               value={this.props.metalChoice}
               onChange={this.props.handleMetalChange}
             >
@@ -17,13 +17,32 @@ class Form extends React.Component {
               <option value="Platinum">Platinum</option>
               <option value="Palladium">Palladium</option>
             </select>
-            {/* <button
+            <select
+              name="select"
+              className="select mb-2"
+              value={this.props.currency}
+              onChange={this.props.handleCurrencyChange}
+            >
+              <option value="USD">U.S. Dollar</option>
+              <option value="EUR">Euro</option>
+              <option value="GBP">British Pound</option>
+              <option value="AUD">Australian Dollar</option>
+              <option value="CAD">Canadian Dollar</option>
+              <option value="JPY">Japanese Yen</option>
+              <option value="CNY">Chinese Yen Renambi</option>
+              <option value="KRW">Korean Won</option>
+              <option value="BRL">Brazilian Real</option>
+              <option value="CHF">Swiss Franc</option>
+              <option value="SEK">Swedish Krona</option>
+              <option value="HUF">Hungarian Forint</option>
+            </select>
+            <button
               type="button"
               className=" btn-lg btn-danger mb-2"
               onClick={this.props.calculate}
             >
               Calculate
-            </button> */}
+            </button>
           </div>
           <div className="form-group">
             <input
