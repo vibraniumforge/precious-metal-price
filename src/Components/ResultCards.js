@@ -12,7 +12,7 @@ class ResultCards extends React.Component {
                   {this.props.metalChoice} Price per{" "}
                   {this.props.amount !== 1 ? this.props.amount : ""} Gram
                   {this.props.amount !== 1 ? "s" : ""} in {this.props.currency}:{" "}
-                  {this.props.currencySign}
+                  {this.props.currencySign}{" "}
                   {(
                     this.props.priceInGrams * this.props.amount
                   ).toLocaleString()}
@@ -28,7 +28,7 @@ class ResultCards extends React.Component {
                   {this.props.amount !== 1 ? this.props.amount : ""} Imperial
                   Ounce
                   {this.props.amount !== 1 ? "s" : ""} in {this.props.currency}:{" "}
-                  {this.props.currencySign}
+                  {this.props.currencySign}{" "}
                   {(
                     this.props.priceInImperialOz * this.props.amount
                   ).toLocaleString()}
@@ -43,7 +43,7 @@ class ResultCards extends React.Component {
                   {this.props.metalChoice} Price per{" "}
                   {this.props.amount !== 1 ? this.props.amount : ""} Troy Ounce
                   {this.props.amount !== 1 ? "s" : ""} in {this.props.currency}:{" "}
-                  {this.props.currencySign}
+                  {this.props.currencySign}{" "}
                   {(
                     this.props.priceInTroyOz * this.props.amount
                   ).toLocaleString()}
@@ -59,7 +59,7 @@ class ResultCards extends React.Component {
                     {this.props.metalChoice} Price per{" "}
                     {this.props.amount !== 1 ? this.props.amount : ""} Pound
                     {this.props.amount !== 1 ? "s" : ""} in{" "}
-                    {this.props.currency}: {this.props.currencySign}
+                    {this.props.currency}: {this.props.currencySign}{" "}
                     {(
                       this.props.priceInPounds * this.props.amount
                     ).toLocaleString()}
@@ -75,7 +75,7 @@ class ResultCards extends React.Component {
                   {this.props.metalChoice} Price per{" "}
                   {this.props.amount !== 1 ? this.props.amount : ""} Kilogram
                   {this.props.amount !== 1 ? "s" : ""} in {this.props.currency}:{" "}
-                  {this.props.currencySign}
+                  {this.props.currencySign}{" "}
                   {(
                     this.props.priceInKilograms * this.props.amount
                   ).toLocaleString()}
@@ -90,7 +90,7 @@ class ResultCards extends React.Component {
                   {this.props.metalChoice} Price per{" "}
                   {this.props.amount !== 1 ? this.props.amount : ""} UK Stone
                   {this.props.amount !== 1 ? "s" : ""} in {this.props.currency}:{" "}
-                  {this.props.currencySign}
+                  {this.props.currencySign}{" "}
                   {(
                     this.props.priceInUKStones * this.props.amount
                   ).toLocaleString()}
@@ -107,7 +107,7 @@ class ResultCards extends React.Component {
                     {this.props.amount !== 1 ? this.props.amount : ""} 400 oz.
                     Bar
                     {this.props.amount !== 1 ? "s" : ""} in{" "}
-                    {this.props.currency}: {this.props.currencySign}
+                    {this.props.currency}: {this.props.currencySign}{" "}
                     {(
                       this.props.priceInBars * this.props.amount
                     ).toLocaleString()}
@@ -127,7 +127,7 @@ class ResultCards extends React.Component {
                       : `(${this.props.userWeight} pounds) `
                     ).toLocaleString()}{" "}
                     in {this.props.metalChoice} : {this.props.currency}{" "}
-                    {this.props.currencySign}
+                    {this.props.currencySign}{" "}
                     {(this.props.priceInUserWeight === 0 || ""
                       ? ""
                       : this.props.priceInUserWeight * 1
@@ -145,7 +145,7 @@ class ResultCards extends React.Component {
                     {this.props.metalChoice} Price per{" "}
                     {this.props.amount !== 1 ? this.props.amount : ""} U.S. Ton
                     {this.props.amount !== 1 ? "s" : ""} in{" "}
-                    {this.props.currency}: {this.props.currencySign}
+                    {this.props.currency}: {this.props.currencySign}{" "}
                     {(
                       this.props.priceInUSTons * this.props.amount
                     ).toLocaleString()}
@@ -163,7 +163,7 @@ class ResultCards extends React.Component {
                     {this.props.amount !== 1 ? this.props.amount : ""} Metric
                     Ton
                     {this.props.amount !== 1 ? "s" : ""} in{" "}
-                    {this.props.currency}: {this.props.currencySign}
+                    {this.props.currency}: {this.props.currencySign}{" "}
                     {(
                       this.props.priceInMetricTons * this.props.amount
                     ).toLocaleString()}
@@ -181,7 +181,7 @@ class ResultCards extends React.Component {
                     {this.props.amount !== 1 ? this.props.amount : ""} Imperial
                     Ton
                     {this.props.amount !== 1 ? "s" : ""} in{" "}
-                    {this.props.currency}: {this.props.currencySign}
+                    {this.props.currency}: {this.props.currencySign}{" "}
                     {(
                       this.props.priceInImperialTons * this.props.amount
                     ).toLocaleString()}

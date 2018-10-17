@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-
 import ResultCards from "./Components/ResultCards";
 import Form from "./Components/Form";
+// import currencySignChooser from "./helpers/currencySign.js";
+// import * as currencySign from "./helpers/currencySign.js";
+//why doesnt this work?
+import { currencySignChooser } from "./helpers/currencySign.js";
 
 class App extends Component {
   constructor(props) {
@@ -37,6 +40,8 @@ class App extends Component {
       priceInImperialTons: 0
     };
   }
+
+  // CHF SEK HUF go after the number
 
   // componentDidMount() {
   //   document.body.classList.add("gold");
@@ -181,57 +186,14 @@ class App extends Component {
   };
 
   handleCurrencyChange = e => {
-    let sign = "";
-    switch (e.target.value) {
-      case "USD":
-        sign = "$";
-        break;
-      case "EUR":
-        sign = "€";
-        break;
-      case "GBP":
-        sign = "£";
-        break;
-      case "AUD":
-        sign = "AU$";
-        break;
-      case "CAD":
-        sign = "C$";
-        break;
-      case "JPY":
-        sign = "¥";
-        break;
-      case "CNY":
-        sign = "¥";
-        break;
-      case "KRW":
-        sign = "₩";
-        break;
-      case "BRL":
-        sign = "R$";
-        break;
-      case "CHF":
-        sign = "CHF";
-        break;
-      case "SEK":
-        sign = "kr";
-        break;
-      case "HUF":
-        sign = "Ft";
-        break;
-      default:
-        sign = "$";
-        break;
-    }
     this.setState(
-      { currency: e.target.value, currencySign: sign },
+      {
+        currency: e.target.value,
+        currencySign: currencySignChooser(e)
+      },
       this.getAPI
     );
   };
-
-  // handlePriceChange = e => {
-  //   this.setState({ price: parseFloat(e.target.value) });
-  // };
 
   changeBackground = () => {
     if (this.state.metalChoice === "Gold") {
@@ -274,16 +236,15 @@ class App extends Component {
   };
 
   render() {
-    console.log("this.state.price=", this.state.price);
+    console.log("render this.state.price=", this.state.price);
     return (
       <React.Fragment>
         <div id="main" className="container">
           <div className="row">
-            <div className="col-md-6 offset-md-3">
+            <div className="col-md-8 offset-md-2">
               <h2 className="display-6 text-center mb-3">
                 Precious Metal Price Converter
               </h2>
-              <span role="img" aria-label="sheep" />
               <Form
                 metalChoice={this.state.metalChoice}
                 amount={this.state.amount}
@@ -293,7 +254,6 @@ class App extends Component {
                 handleAmountChange={this.handleAmountChange}
                 handleMetalChange={this.handleMetalChange}
                 currency={this.state.currency}
-                // handlePriceChange={this.handlePriceChange}
                 handleUserWeightChange={this.handleUserWeightChange}
                 handleCurrencyChange={this.handleCurrencyChange}
                 getAPI={this.getAPI}

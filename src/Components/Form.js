@@ -29,7 +29,7 @@ class Form extends React.Component {
               <option value="AUD">Australian Dollar</option>
               <option value="CAD">Canadian Dollar</option>
               <option value="JPY">Japanese Yen</option>
-              <option value="CNY">Chinese Yen Renambi</option>
+              <option value="CNY">Chinese Yuan Renambi</option>
               <option value="KRW">Korean Won</option>
               <option value="BRL">Brazilian Real</option>
               <option value="CHF">Swiss Franc</option>
