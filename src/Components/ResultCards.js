@@ -12,10 +12,21 @@ class ResultCards extends React.Component {
                   {this.props.metalChoice} Price per{" "}
                   {this.props.amount !== 1 ? this.props.amount : ""} Gram
                   {this.props.amount !== 1 ? "s" : ""} in {this.props.currency}:{" "}
-                  {this.props.currencySign}{" "}
-                  {(
-                    this.props.priceInGrams * this.props.amount
-                  ).toLocaleString()}
+                  <span className="number">
+                    {this.props.currencySignIsBefore === true
+                      ? this.props.currencySign
+                      : ""}
+                    {this.props.price
+                      ? (
+                          this.props.price[this.props.metalChoice] *
+                          this.props.amount *
+                          0.032
+                        ).toLocaleString()
+                      : ""}{" "}
+                    {this.props.currencySignIsBefore === false
+                      ? this.props.currencySign
+                      : ""}
+                  </span>
                 </h4>
               </div>
             </div>
@@ -28,10 +39,19 @@ class ResultCards extends React.Component {
                   {this.props.amount !== 1 ? this.props.amount : ""} Imperial
                   Ounce
                   {this.props.amount !== 1 ? "s" : ""} in {this.props.currency}:{" "}
-                  {this.props.currencySign}{" "}
-                  {(
-                    this.props.priceInImperialOz * this.props.amount
-                  ).toLocaleString()}
+                  <span className="number">
+                    {this.props.currencySignIsBefore === true
+                      ? this.props.currencySign
+                      : ""}
+                    {(
+                      this.props.price[this.props.metalChoice] *
+                      this.props.amount *
+                      0.911
+                    ).toLocaleString()}{" "}
+                    {this.props.currencySignIsBefore === false
+                      ? this.props.currencySign
+                      : ""}
+                  </span>
                 </h4>
               </div>
             </div>
@@ -43,10 +63,19 @@ class ResultCards extends React.Component {
                   {this.props.metalChoice} Price per{" "}
                   {this.props.amount !== 1 ? this.props.amount : ""} Troy Ounce
                   {this.props.amount !== 1 ? "s" : ""} in {this.props.currency}:{" "}
-                  {this.props.currencySign}{" "}
-                  {(
-                    this.props.priceInTroyOz * this.props.amount
-                  ).toLocaleString()}
+                  <span className="number">
+                    {this.props.currencySignIsBefore === true
+                      ? this.props.currencySign
+                      : ""}
+                    {(
+                      this.props.price[this.props.metalChoice] *
+                      this.props.amount *
+                      1
+                    ).toLocaleString()}{" "}
+                    {this.props.currencySignIsBefore === false
+                      ? this.props.currencySign
+                      : ""}
+                  </span>
                 </h4>
               </div>
             </div>
@@ -54,17 +83,24 @@ class ResultCards extends React.Component {
           <div className="card bg-success mb-2">
             <div className="card-block">
               <div id="poundsOutput">
-                <span>
-                  <h4>
-                    {this.props.metalChoice} Price per{" "}
-                    {this.props.amount !== 1 ? this.props.amount : ""} Pound
-                    {this.props.amount !== 1 ? "s" : ""} in{" "}
-                    {this.props.currency}: {this.props.currencySign}{" "}
+                <h4>
+                  {this.props.metalChoice} Price per{" "}
+                  {this.props.amount !== 1 ? this.props.amount : ""} Pound
+                  {this.props.amount !== 1 ? "s" : ""} in {this.props.currency}:{" "}
+                  <span className="number">
+                    {this.props.currencySignIsBefore === true
+                      ? this.props.currencySign
+                      : ""}
                     {(
-                      this.props.priceInPounds * this.props.amount
-                    ).toLocaleString()}
-                  </h4>
-                </span>
+                      this.props.price[this.props.metalChoice] *
+                      this.props.amount *
+                      14.583
+                    ).toLocaleString()}{" "}
+                    {this.props.currencySignIsBefore === false
+                      ? this.props.currencySign
+                      : ""}
+                  </span>
+                </h4>
               </div>
             </div>
           </div>
@@ -75,10 +111,19 @@ class ResultCards extends React.Component {
                   {this.props.metalChoice} Price per{" "}
                   {this.props.amount !== 1 ? this.props.amount : ""} Kilogram
                   {this.props.amount !== 1 ? "s" : ""} in {this.props.currency}:{" "}
-                  {this.props.currencySign}{" "}
-                  {(
-                    this.props.priceInKilograms * this.props.amount
-                  ).toLocaleString()}
+                  <span className="number">
+                    {this.props.currencySignIsBefore === true
+                      ? this.props.currencySign
+                      : ""}
+                    {(
+                      this.props.price[this.props.metalChoice] *
+                      this.props.amount *
+                      32.151
+                    ).toLocaleString()}{" "}
+                    {this.props.currencySignIsBefore === false
+                      ? this.props.currencySign
+                      : ""}
+                  </span>
                 </h4>
               </div>
             </div>
@@ -90,10 +135,19 @@ class ResultCards extends React.Component {
                   {this.props.metalChoice} Price per{" "}
                   {this.props.amount !== 1 ? this.props.amount : ""} UK Stone
                   {this.props.amount !== 1 ? "s" : ""} in {this.props.currency}:{" "}
-                  {this.props.currencySign}{" "}
-                  {(
-                    this.props.priceInUKStones * this.props.amount
-                  ).toLocaleString()}
+                  <span className="number">
+                    {this.props.currencySignIsBefore === true
+                      ? this.props.currencySign
+                      : ""}
+                    {(
+                      this.props.price[this.props.metalChoice] *
+                      this.props.amount *
+                      204.167
+                    ).toLocaleString()}{" "}
+                    {this.props.currencySignIsBefore === false
+                      ? this.props.currencySign
+                      : ""}
+                  </span>
                 </h4>
               </div>
             </div>
@@ -101,18 +155,24 @@ class ResultCards extends React.Component {
           <div className="card bg-warning mb-2">
             <div className="card-block">
               <div id="barOutput">
-                <span>
-                  <h4>
-                    {this.props.metalChoice} Price per{" "}
-                    {this.props.amount !== 1 ? this.props.amount : ""} 400 oz.
-                    Bar
-                    {this.props.amount !== 1 ? "s" : ""} in{" "}
-                    {this.props.currency}: {this.props.currencySign}{" "}
+                <h4>
+                  {this.props.metalChoice} Price per{" "}
+                  {this.props.amount !== 1 ? this.props.amount : ""} 400 oz. Bar
+                  {this.props.amount !== 1 ? "s" : ""} in {this.props.currency}:{" "}
+                  <span className="number">
+                    {this.props.currencySignIsBefore === true
+                      ? this.props.currencySign
+                      : ""}
                     {(
-                      this.props.priceInBars * this.props.amount
-                    ).toLocaleString()}
-                  </h4>
-                </span>
+                      this.props.price[this.props.metalChoice] *
+                      this.props.amount *
+                      400
+                    ).toLocaleString()}{" "}
+                    {this.props.currencySignIsBefore === false
+                      ? this.props.currencySign
+                      : ""}
+                  </span>
+                </h4>
               </div>
             </div>
           </div>
@@ -127,17 +187,26 @@ class ResultCards extends React.Component {
                       : `(${this.props.userWeight} pounds) `
                     ).toLocaleString()}{" "}
                     in {this.props.metalChoice} : {this.props.currency}{" "}
-                    {this.props.currencySign}{" "}
-                    {(this.props.priceInUserWeight === 0 || ""
-                      ? ""
-                      : this.props.priceInUserWeight * 1
-                    ).toLocaleString()}
+                    <span className="number">
+                      {this.props.currencySignIsBefore === true
+                        ? this.props.currencySign
+                        : ""}
+                      {(this.props.userWeight === 0 || ""
+                        ? ""
+                        : this.props.userWeight *
+                          this.props.price[this.props.metalChoice] *
+                          14.583
+                      ).toLocaleString()}{" "}
+                      {this.props.currencySignIsBefore === false
+                        ? this.props.currencySign
+                        : ""}
+                    </span>
                   </h4>
                 </span>
               </div>
             </div>
           </div>
-          <div className="card bg-danger mb-2">
+          <div className="card bg-success mb-2">
             <div className="card-block">
               <div id="usTonOutput">
                 <span>
@@ -145,16 +214,26 @@ class ResultCards extends React.Component {
                     {this.props.metalChoice} Price per{" "}
                     {this.props.amount !== 1 ? this.props.amount : ""} U.S. Ton
                     {this.props.amount !== 1 ? "s" : ""} in{" "}
-                    {this.props.currency}: {this.props.currencySign}{" "}
-                    {(
-                      this.props.priceInUSTons * this.props.amount
-                    ).toLocaleString()}
+                    {this.props.currency}:{" "}
+                    <span className="number">
+                      {this.props.currencySignIsBefore === true
+                        ? this.props.currencySign
+                        : ""}
+                      {(
+                        this.props.price[this.props.metalChoice] *
+                        this.props.amount *
+                        29166.667
+                      ).toLocaleString()}{" "}
+                      {this.props.currencySignIsBefore === false
+                        ? this.props.currencySign
+                        : ""}
+                    </span>
                   </h4>
                 </span>
               </div>
             </div>
           </div>
-          <div className="card bg-danger mb-2">
+          <div className="card bg-primary mb-2">
             <div className="card-block">
               <div id="metricTonOutput">
                 <span>
@@ -163,30 +242,47 @@ class ResultCards extends React.Component {
                     {this.props.amount !== 1 ? this.props.amount : ""} Metric
                     Ton
                     {this.props.amount !== 1 ? "s" : ""} in{" "}
-                    {this.props.currency}: {this.props.currencySign}{" "}
-                    {(
-                      this.props.priceInMetricTons * this.props.amount
-                    ).toLocaleString()}
+                    {this.props.currency}:{" "}
+                    <span className="number">
+                      {this.props.currencySignIsBefore === true
+                        ? this.props.currencySign
+                        : ""}
+                      {(
+                        this.props.price[this.props.metalChoice] *
+                        this.props.amount *
+                        32150.747
+                      ).toLocaleString()}{" "}
+                      {this.props.currencySignIsBefore === false
+                        ? this.props.currencySign
+                        : ""}
+                    </span>
                   </h4>
                 </span>
               </div>
             </div>
           </div>
-          <div className="card bg-danger mb-2">
+          <div className="card bg-secondary mb-2">
             <div className="card-block">
               <div id="imperialTonOutput">
-                <span>
-                  <h4>
-                    {this.props.metalChoice} Price per{" "}
-                    {this.props.amount !== 1 ? this.props.amount : ""} Imperial
-                    Ton
-                    {this.props.amount !== 1 ? "s" : ""} in{" "}
-                    {this.props.currency}: {this.props.currencySign}{" "}
+                <h4>
+                  {this.props.metalChoice} Price per{" "}
+                  {this.props.amount !== 1 ? this.props.amount : ""} Imperial
+                  Ton
+                  {this.props.amount !== 1 ? "s" : ""} in {this.props.currency}:{" "}
+                  <span className="number">
+                    {this.props.currencySignIsBefore === true
+                      ? this.props.currencySign
+                      : ""}
                     {(
-                      this.props.priceInImperialTons * this.props.amount
-                    ).toLocaleString()}
-                  </h4>
-                </span>
+                      this.props.price[this.props.metalChoice] *
+                      this.props.amount *
+                      32666.667
+                    ).toLocaleString()}{" "}
+                    {this.props.currencySignIsBefore === false
+                      ? this.props.currencySign
+                      : ""}
+                  </span>
+                </h4>
               </div>
             </div>
           </div>

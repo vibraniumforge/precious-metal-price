@@ -4,18 +4,12 @@ import Form from "./Components/Form";
 // import currencySignChooser from "./helpers/currencySign.js";
 // import * as currencySign from "./helpers/currencySign.js";
 //why doesnt this work?
-import { currencySignChooser } from "./helpers/currencySign.js";
+import { currencySignChooser, signLocator } from "./helpers/currencySign.js";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // price: {
-      //   Gold: 1224.67,
-      //   Silver: 14.6,
-      //   Platinum: 846.75,
-      //   Palladium: 1086.45
-      // },
       price: {
         Gold: 0,
         Silver: 0,
@@ -27,21 +21,9 @@ class App extends Component {
       userWeight: "",
       currency: "USD",
       currencySign: "$",
-      priceInGrams: 0,
-      priceInImperialOz: 0,
-      priceInTroyOz: 0,
-      priceInPounds: 0,
-      priceInKilograms: 0,
-      priceInUKStones: 0,
-      priceInBars: 0,
-      priceInUserWeight: 0,
-      priceInUSTons: 0,
-      priceInMetricTons: 0,
-      priceInImperialTons: 0
+      currencySignIsBefore: true
     };
   }
-
-  // CHF SEK HUF go after the number
 
   // componentDidMount() {
   //   document.body.classList.add("gold");
@@ -149,7 +131,7 @@ class App extends Component {
         });
       })
       .catch(err => console.log(err));
-    this.calculate();
+    // this.calculate();
   }
 
   // .then(res1 => console.log(res1))
@@ -172,24 +154,39 @@ class App extends Component {
   // );
 
   handleAmountChange = e => {
-    this.setState({ amount: parseInt(e.target.value, 10) });
+    if (e.target.value) {
+      this.setState({ amount: parseInt(e.target.value, 10) });
+    } else {
+      this.setState({ amount: "" });
+    }
+
     // this.setState({ amount: parseInt(e.target.value, 10) }, this.calculate);
   };
 
   handleUserWeightChange = e => {
-    this.setState({ userWeight: parseInt(e.target.value, 10) });
+    if (e.target.value) {
+      this.setState({ userWeight: parseInt(e.target.value, 10) });
+    } else {
+      this.setState({ userWeight: "" });
+    }
+
     // this.setState({ userWeight: parseInt(e.target.value, 10) }, this.calculate);
   };
 
   handleMetalChange = e => {
-    this.setState({ metalChoice: e.target.value }, this.changeBackground);
+    this.setState(
+      { metalChoice: e.target.value },
+      this.changeBackground
+      // this.calculate
+    );
   };
 
   handleCurrencyChange = e => {
     this.setState(
       {
         currency: e.target.value,
-        currencySign: currencySignChooser(e)
+        currencySign: currencySignChooser(e),
+        currencySignIsBefore: signLocator(e)
       },
       this.getAPI
     );
@@ -212,28 +209,9 @@ class App extends Component {
     }
   };
 
-  calculate = () => {
-    let { metalChoice } = this.state;
-    this.setState({
-      priceInGrams: (this.state.price[metalChoice] * 0.032).toFixed(2),
-      priceInImperialOz: (this.state.price[metalChoice] * 0.911).toFixed(2),
-      priceInTroyOz: (this.state.price[metalChoice] * 1).toFixed(2),
-      priceInPounds: (this.state.price[metalChoice] * 14.583).toFixed(2),
-      priceInKilograms: (this.state.price[metalChoice] * 32.151).toFixed(2),
-      priceInUKStones: (this.state.price[metalChoice] * 204.167).toFixed(2),
-      priceInBars: (this.state.price[metalChoice] * 400).toFixed(2),
-      priceInUserWeight: (
-        this.state.price[metalChoice] *
-        this.state.userWeight *
-        14.583
-      ).toFixed(2),
-      priceInUSTons: (this.state.price[metalChoice] * 29166.667).toFixed(2),
-      priceInMetricTons: (this.state.price[metalChoice] * 32150.747).toFixed(2),
-      priceInImperialTons: (this.state.price[metalChoice] * 32666.667).toFixed(
-        2
-      )
-    });
-  };
+  // calculate() {
+  //   let { metalChoice } = this.state;
+  // }
 
   render() {
     console.log("render this.state.price=", this.state.price);
@@ -248,34 +226,22 @@ class App extends Component {
               <Form
                 metalChoice={this.state.metalChoice}
                 amount={this.state.amount}
-                price={this.state.price}
                 userWeight={this.state.userWeight}
-                calculate={this.calculate}
+                currency={this.state.currency}
                 handleAmountChange={this.handleAmountChange}
                 handleMetalChange={this.handleMetalChange}
-                currency={this.state.currency}
                 handleUserWeightChange={this.handleUserWeightChange}
                 handleCurrencyChange={this.handleCurrencyChange}
                 getAPI={this.getAPI}
               />
               <ResultCards
-                priceInGrams={this.state.priceInGrams}
-                priceInImperialOz={this.state.priceInImperialOz}
-                priceInTroyOz={this.state.priceInTroyOz}
-                priceInPounds={this.state.priceInPounds}
-                priceInKilograms={this.state.priceInKilograms}
-                priceInUKStones={this.state.priceInUKStones}
-                priceInBars={this.state.priceInBars}
-                priceInUserWeight={this.state.priceInUserWeight}
-                priceInUSTons={this.state.priceInUSTons}
-                priceInMetricTons={this.state.priceInMetricTons}
-                priceInImperialTons={this.state.priceInImperialTons}
+                price={this.state.price}
                 metalChoice={this.state.metalChoice}
                 amount={this.state.amount}
                 userWeight={this.state.userWeight}
-                price={this.state.price}
-                currencySign={this.state.currencySign}
                 currency={this.state.currency}
+                currencySign={this.state.currencySign}
+                currencySignIsBefore={this.state.currencySignIsBefore}
               />
             </div>
           </div>

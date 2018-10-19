@@ -50,7 +50,7 @@ class Form extends React.Component {
               placeholder="Enter the amount"
               id="ozInput"
               className="form-control form-control-lg"
-              value={this.props.amount}
+              value={this.props.amount.toString()}
               onChange={this.props.handleAmountChange}
               min="1"
             />

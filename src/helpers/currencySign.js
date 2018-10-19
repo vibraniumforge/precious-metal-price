@@ -1,5 +1,6 @@
+let sign = "";
+let signIsBefore = true;
 const currencySignChooser = e => {
-  let sign = "";
   switch (e.target.value) {
     case "USD":
       sign = "$";
@@ -44,4 +45,16 @@ const currencySignChooser = e => {
   return sign;
 };
 
-export { currencySignChooser };
+const signLocator = e => {
+  if (
+    e.target.value === "CHF" ||
+    e.target.value === "SEK" ||
+    e.target.value === "HUF"
+  ) {
+    signIsBefore = false;
+  } else {
+    signIsBefore = true;
+  }
+  return signIsBefore;
+};
+export { currencySignChooser, signLocator };
