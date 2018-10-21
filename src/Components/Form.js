@@ -39,7 +39,7 @@ class Form extends React.Component {
             <button
               type="button"
               className=" btn-lg btn-danger mb-2"
-              onClick={this.props.calculate}
+              onClick={this.props.getAPI}
             >
               Calculate
             </button>

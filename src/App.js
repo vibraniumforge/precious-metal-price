@@ -209,10 +209,6 @@ class App extends Component {
     }
   };
 
-  // calculate() {
-  //   let { metalChoice } = this.state;
-  // }
-
   render() {
     console.log("render this.state.price=", this.state.price);
     return (
