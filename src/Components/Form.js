@@ -54,14 +54,6 @@ class Form extends React.Component {
               onChange={this.props.handleAmountChange}
               min="1"
             />
-            {/* <input
-              type="number"
-              placeholder="Enter today's price in Troy Ounces"
-              id="priceInput"
-              className="form-control form-control-lg"
-              value={this.props.price}
-              onChange={this.props.handlePriceChange}
-            /> */}
             <input
               type="number"
               placeholder="Enter your weight in pounds"

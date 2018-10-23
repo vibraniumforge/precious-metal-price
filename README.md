@@ -4,10 +4,9 @@ It uses React.js and Bootstrap.
 
 The precious metals are: Gold, Silver, Platinum, and Palladium.
 
-The currencies are: U.S. Dollar, Euro, British Pound. Australian Dollar, Canadian Dollar, Japanese Yen, Chinese Yuan, Korean Won, Brazilian Real, Swiss Franc, Swedish Koruna, and Hungarian Forint.
+The currencies are: U.S. Dollar, E.U. Euro, British Pound. Australian Dollar, Canadian Dollar, Japanese Yen, Chinese Yuan, Korean Won, Brazilian Real, Swiss Franc, Swedish Krona, and Hungarian Forint.
 
 It uses the Alpha Vantage API to get the currency prices. Aplhavantage.co.
-
 
 The converstion rates between troy ounces and other wieghts are as follows:
 
