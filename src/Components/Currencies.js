@@ -1,7 +1,7 @@
 import React from "react";
 import ReactCountryFlag from "react-country-flag";
 
-class Currencies extends React.Component {
+class Currencies extends React.PureComponent {
   render() {
     return (
       <React.Fragment>

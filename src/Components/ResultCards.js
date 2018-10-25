@@ -1,6 +1,6 @@
 import React from "react";
 
-class ResultCards extends React.Component {
+class ResultCards extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
