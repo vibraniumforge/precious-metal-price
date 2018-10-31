@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ResultCards from "./Components/ResultCards";
 import Form from "./Components/Form";
-import Currencies from "./Components/Currencies";
 import { currencySignChooser, signLocator } from "./helpers/currencySign.js";
 
 class App extends Component {
@@ -30,8 +29,6 @@ class App extends Component {
   }
 
   getAPI = () => {
-    console.log(this);
-    console.log(this.state.currency);
     Promise.all([
       fetch(
         "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&" +
@@ -134,7 +131,6 @@ class App extends Component {
   };
 
   render() {
-    console.log("render this.state.price=", this.state.price);
     return (
       <React.Fragment>
         <div id="main" className="container">
