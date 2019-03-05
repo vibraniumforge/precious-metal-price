@@ -15,7 +15,7 @@ const currencySignChooser = e => {
     HUF: "Ft"
   };
 
-  currencySign = Object.values(currencyList[e.target.value]);
+  currencySign = (e.target.value) ? Object.values(currencyList[e.target.value]):"";
   return currencySign;
 };
 

@@ -215,27 +215,31 @@ class ResultCards extends React.PureComponent {
                 <span>
                   <h4>
                     Your weight{" "}
-                    {(this.props.userWeight === 0 || ""
-                      ? ""
-                      : `(${this.props.userWeight} pounds) `
+                    {(this.props.userWeight
+                      ? `(${this.props.userWeight} pounds) `
+                      : ""
                     ).toString()}{" "}
-                    in {this.props.metalChoice} : {this.props.currency}{" "}
+                    in {this.props.metalChoice} :{" "}
+                    {this.props.currency ? this.props.currency : ""}{" "}
                     <span className="number">
-                      {this.props.currencySignIsBefore === true
+                      {this.props.currencySignIsBefore
                         ? this.props.currencySign
                         : ""}
-                      {(this.props.userWeight === 0 || ""
+                      {this.props.userWeight &&
+                      this.props.metalChoice &&
+                      this.props.price
+                        ? (
+                            this.props.price[this.props.metalChoice] *
+                            this.props.userWeight *
+                            14.583
+                          )
+                            .toFixed(2)
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                        : ""}{" "}
+                      {this.props.currencySignIsBefore
                         ? ""
-                        : this.props.userWeight *
-                          this.props.price[this.props.metalChoice] *
-                          14.583
-                      )
-                        .toFixed(2)
-                        .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
-                      {this.props.currencySignIsBefore === false
-                        ? this.props.currencySign
-                        : ""}
+                        : this.props.currencySign}
                     </span>
                   </h4>
                 </span>

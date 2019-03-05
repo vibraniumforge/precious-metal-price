@@ -12,6 +12,7 @@ class Form extends React.PureComponent {
               value={this.props.metalChoice}
               onChange={this.props.handleMetalChange}
             >
+              <option value="">Choose metal</option>
               <option value="Gold">Gold</option>
               <option value="Silver">Silver</option>
               <option value="Platinum">Platinum</option>
@@ -23,6 +24,8 @@ class Form extends React.PureComponent {
               value={this.props.currency}
               onChange={this.props.handleCurrencyChange}
             >
+              {" "}
+              <option value="">Choose currency</option>
               <option value="USD">U.S. Dollar</option>
               <option value="EUR">Euro</option>
               <option value="GBP">British Pound</option>
@@ -36,34 +39,39 @@ class Form extends React.PureComponent {
               <option value="SEK">Swedish Krona</option>
               <option value="HUF">Hungarian Forint</option>
             </select>
-            <button
-              type="button"
-              className=" btn-lg btn-danger mb-2"
-              onClick={this.props.getAPI}
-            >
-              Calculate
-            </button>
           </div>
-          <div className="form-group">
-            <input
-              type="number"
-              placeholder="Enter the amount"
-              id="ozInput"
-              className="form-control form-control-lg"
-              value={this.props.amount.toString()}
-              onChange={this.props.handleAmountChange}
-              min="1"
-            />
-            <input
-              type="number"
-              placeholder="Enter your weight in pounds"
-              id="userWeight"
-              className="form-control form-control-lg"
-              value={this.props.userWeight}
-              onChange={this.props.handleUserWeightChange}
-            />
+          <div className="form-row">
+            <div className="col">
+              <input
+                type="number"
+                placeholder="Enter the amount"
+                id="ozInput"
+                name="amount"
+                className="form-control"
+                value={this.props.amount.toString()}
+                onChange={this.props.handleChange}
+                min="1"
+              />
+            </div>
+            <div className="col">
+              <input
+                type="text"
+                placeholder="Enter your weight in pounds"
+                id="userWeight"
+                name="userWeight"
+                className=" form-control"
+                value={this.props.userWeight}
+                onChange={this.props.handleChange}
+              />
+            </div>
           </div>
-          <div />
+          <button
+            type="button"
+            className="btn-lg btn-danger mb-2"
+            onClick={this.props.getAPI}
+          >
+            Calculate
+          </button>
         </form>
         <br />
       </React.Fragment>

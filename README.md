@@ -4,7 +4,7 @@ It uses React.js and Bootstrap.
 
 The precious metals are: Gold, Silver, Platinum, and Palladium.
 
-The currencies are: U.S. Dollar, E.U. Euro, British Pound. Australian Dollar, Canadian Dollar, Japanese Yen, Chinese Yuan, Korean Won, Brazilian Real, Swiss Franc, Swedish Krona, and Hungarian Forint.
+The currencies are: U.S. Dollar, E.U. Euro, British Pound, Australian Dollar, Canadian Dollar, Japanese Yen, Chinese Yuan, Korean Won, Brazilian Real, Swiss Franc, Swedish Krona, and Hungarian Forint.
 
 It uses the Alpha Vantage API to get the currency prices. Aplhavantage.co.
 
@@ -21,4 +21,4 @@ User weight = It depends
 1 Metric Ton = 32150.747 Troy Ounces
 1 Imperial Ton = 32666.667 Troy Ounces
 
-Please be forewarned that the API is a free account, and that it only allows a certain amount of calls in a certain amount of time.
+Please be forewarned that the API is a free account, and that it only allows 5 calls per minute or 500 calls per day.

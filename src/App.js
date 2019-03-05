@@ -3,6 +3,9 @@ import ResultCards from "./Components/ResultCards";
 import Form from "./Components/Form";
 import { currencySignChooser, signLocator } from "./helpers/currencySign.js";
 
+const url =
+  "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=";
+const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
 class App extends Component {
   constructor(props) {
     super(props);
@@ -13,11 +16,11 @@ class App extends Component {
         Platinum: 0,
         Palladium: 0
       },
-      metalChoice: "Gold",
+      metalChoice: "",
       amount: "",
       userWeight: "",
-      currency: "USD",
-      currencySign: "$",
+      currency: "",
+      currencySign: "",
       currencySignIsBefore: true
     };
   }
@@ -25,35 +28,14 @@ class App extends Component {
   componentDidMount() {
     document.body.classList.add("gold");
     document.body.classList.remove("silver", "platinum", "palladium");
-    this.getAPI();
   }
 
   getAPI = () => {
     Promise.all([
-      fetch(
-        "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&" +
-          "from_currency=XAU&to_currency=" +
-          this.state.currency +
-          "&apikey=9ISBCG500FVCKBG6"
-      ),
-      fetch(
-        "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&" +
-          "from_currency=XAG&to_currency=" +
-          this.state.currency +
-          "&apikey=9ISBCG500FVCKBG6"
-      ),
-      fetch(
-        "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&" +
-          "from_currency=XPT&to_currency=" +
-          this.state.currency +
-          "&apikey=9ISBCG500FVCKBG6"
-      ),
-      fetch(
-        "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&" +
-          "from_currency=XPD&to_currency=" +
-          this.state.currency +
-          "&apikey=9ISBCG500FVCKBG6"
-      )
+      fetch(`${url}XAU&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`),
+      fetch(`${url}XAG&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`),
+      fetch(`${url}XPT&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`),
+      fetch(`${url}XPD&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`)
     ])
       .then(([res1, res2, res3, res4]) =>
         Promise.all([res1.json(), res2.json(), res3.json(), res4.json()])
@@ -83,21 +65,13 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
-  handleAmountChange = e => {
+  handleChange=(e)=> {
     if (e.target.value) {
-      this.setState({ amount: parseInt(e.target.value, 10) });
+      this.setState({[e.target.name]: parseInt(e.target.value, 10) });
     } else {
-      this.setState({ amount: "" });
+      this.setState({[e.target.name]: "" });
     }
-  };
-
-  handleUserWeightChange = e => {
-    if (e.target.value) {
-      this.setState({ userWeight: parseInt(e.target.value, 10) });
-    } else {
-      this.setState({ userWeight: "" });
-    }
-  };
+  }
 
   handleMetalChange = e => {
     this.setState({ metalChoice: e.target.value }, this.changeBackground);
@@ -110,7 +84,6 @@ class App extends Component {
         currencySign: currencySignChooser(e),
         currencySignIsBefore: signLocator(e)
       },
-      this.getAPI
     );
   };
 
@@ -139,15 +112,13 @@ class App extends Component {
               <h2 className="display-6 text-center mb-3">
                 Precious Metal Price Converter
               </h2>
-              {/* <Currencies /> */}
               <Form
                 metalChoice={this.state.metalChoice}
                 amount={this.state.amount}
                 userWeight={this.state.userWeight}
                 currency={this.state.currency}
-                handleAmountChange={this.handleAmountChange}
                 handleMetalChange={this.handleMetalChange}
-                handleUserWeightChange={this.handleUserWeightChange}
+                handleChange={this.handleChange}
                 handleCurrencyChange={this.handleCurrencyChange}
                 getAPI={this.getAPI}
               />
