@@ -123,7 +123,7 @@ class App extends Component {
       <React.Fragment>
         <div id="main" className="container">
           <div className="row">
-            <div className="col-md-8 offset-md-2">
+            <div id="table" className="col-md-8 offset-md-2">
               <h2 className="display-6 text-center mb-3">
                 Precious Metal Price Converter
               </h2>
