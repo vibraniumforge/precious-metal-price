@@ -26,16 +26,23 @@ class App extends Component {
   }
 
   componentDidMount() {
-    document.body.classList.add("gold");
-    document.body.classList.remove("silver", "platinum", "palladium");
+    this.changeBackground();
   }
 
   getAPI = () => {
     Promise.all([
-      fetch(`${url}XAU&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`),
-      fetch(`${url}XAG&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`),
-      fetch(`${url}XPT&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`),
-      fetch(`${url}XPD&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`)
+      fetch(
+        `${url}XAU&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`
+      ),
+      fetch(
+        `${url}XAG&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`
+      ),
+      fetch(
+        `${url}XPT&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`
+      ),
+      fetch(
+        `${url}XPD&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`
+      )
     ])
       .then(([res1, res2, res3, res4]) =>
         Promise.all([res1.json(), res2.json(), res3.json(), res4.json()])
@@ -65,41 +72,49 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
-  handleChange=(e)=> {
+  handleChange = e => {
     if (e.target.value) {
-      this.setState({[e.target.name]: parseInt(e.target.value, 10) });
+      this.setState({ [e.target.name]: parseInt(e.target.value, 10) });
     } else {
-      this.setState({[e.target.name]: "" });
+      this.setState({ [e.target.name]: "" });
     }
-  }
+  };
 
   handleMetalChange = e => {
     this.setState({ metalChoice: e.target.value }, this.changeBackground);
   };
 
   handleCurrencyChange = e => {
-    this.setState(
-      {
-        currency: e.target.value,
-        currencySign: currencySignChooser(e),
-        currencySignIsBefore: signLocator(e)
-      },
-    );
+    this.setState({
+      currency: e.target.value,
+      currencySign: currencySignChooser(e),
+      currencySignIsBefore: signLocator(e)
+    });
   };
 
   changeBackground = () => {
-    if (this.state.metalChoice === "Gold") {
-      document.body.classList.add("gold");
-      document.body.classList.remove("silver", "platinum", "palladium");
-    } else if (this.state.metalChoice === "Silver") {
-      document.body.classList.add("silver");
-      document.body.classList.remove("gold", "platinum", "palladium");
-    } else if (this.state.metalChoice === "Platinum") {
-      document.body.classList.add("platinum");
-      document.body.classList.remove("gold", "silver", "palladium");
-    } else if (this.state.metalChoice === "Palladium") {
-      document.body.classList.add("palladium");
-      document.body.classList.remove("gold", "silver", "platinum");
+    const metalChoice = this.state.metalChoice;
+    switch (metalChoice) {
+      case "Gold":
+        document.body.classList.add("gold");
+        document.body.classList.remove("silver", "platinum", "palladium");
+        break;
+      case "Silver":
+        document.body.classList.add("silver");
+        document.body.classList.remove("gold", "platinum", "palladium");
+        break;
+      case "Platinum":
+        document.body.classList.add("platinum");
+        document.body.classList.remove("gold", "silver", "palladium");
+        break;
+      case "Palladium":
+        document.body.classList.add("palladium");
+        document.body.classList.remove("gold", "silver", "platinum");
+        break;
+      default:
+        document.body.classList.add("gold");
+        document.body.classList.remove("silver", "platinum", "palladium");
+        break;
     }
   };
 
