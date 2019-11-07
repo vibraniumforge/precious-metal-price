@@ -185,7 +185,8 @@ class ResultCards extends React.PureComponent {
               <div id="barOutput">
                 <h4>
                   {this.props.metalChoice} Price per{" "}
-                  {this.props.amount !== 1 ? this.props.amount : ""} 400 oz. Bar
+                  {this.props.amount !== 1 ? this.props.amount : ""} 400 troy
+                  oz. bar
                   {this.props.amount > 1 ? "s" : ""} in {this.props.currency}:{" "}
                   <span className="number">
                     {this.props.currencySignIsBefore === true
