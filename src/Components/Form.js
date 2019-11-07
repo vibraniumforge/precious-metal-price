@@ -12,7 +12,7 @@ class Form extends React.PureComponent {
               value={this.props.metalChoice}
               onChange={this.props.handleMetalChange}
             >
-              <option value="">Choose metal</option>
+              <option value="">Choose metal </option>
               <option value="Gold">Gold</option>
               <option value="Silver">Silver</option>
               <option value="Platinum">Platinum</option>
