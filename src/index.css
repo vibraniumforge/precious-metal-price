@@ -34,3 +34,11 @@ select {
   padding: 10px;
   margin: 10px;
 }
+
+.disabled {
+  opacity: 0.75;
+}
+
+#table {
+  background: black;
+}
