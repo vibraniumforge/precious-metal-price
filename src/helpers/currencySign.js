@@ -1,5 +1,4 @@
 const currencySignChooser = e => {
-  let currencySign = "";
   const currencyList = {
     USD: "$",
     EUR: "€",
@@ -14,9 +13,10 @@ const currencySignChooser = e => {
     SEK: "kr",
     HUF: "Ft"
   };
-
-  currencySign = (e.target.value) ? Object.values(currencyList[e.target.value]):"";
-  return currencySign;
+  const currencySign = e.target.value;
+  return currencyList.hasOwnProperty(currencySign)
+    ? currencyList[currencySign]
+    : "";
 };
 
 const signLocator = e => {
