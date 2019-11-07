@@ -1,11 +1,23 @@
 import React from "react";
 
 class Form extends React.PureComponent {
-  disabled() {
-    return !this.props.currency;
-  }
+  state = {
+    buttonReady: true
+  };
+
+  isButtonReady = () => {
+    console.log("isButtonReady fires");
+    this.setState({ buttonReady: false }, () => console.log(this.state));
+    setTimeout(this.resetButtonTime, 60000);
+  };
+
+  resetButtonTime = () => {
+    this.setState({ buttonReady: true }, () => console.log(this.state));
+  };
 
   render() {
+    console.log(this.state);
+    console.log(this.props);
     return (
       <React.Fragment>
         <form>
@@ -31,18 +43,22 @@ class Form extends React.PureComponent {
               <option value="SEK">Swedish Krona</option>
               <option value="HUF">Hungarian Forint</option>
             </select>
-
             <div>
               <button
                 type="button"
                 className={`btn-lg mb-2 ${
-                  this.disabled() ? "btn-danger disabled" : "btn-success"
+                  this.props.currency && this.state.buttonReady
+                    ? "btn-success disabled"
+                    : "btn-danger disabled"
                 }`}
-                onClick={this.props.getAPI}
-                disabled={this.disabled()}
+                // onClick={(this.props.getAPI, () => this.isButtonReady())}
+                onClick={() => this.isButtonReady()}
+                disabled={!this.props.currency || !this.state.buttonReady}
               >
                 Calculate
               </button>
+              <br></br>
+              <p>Maximum of once per minute</p>
             </div>
             <div className="row">
               <div className="col md-4 mb-3">
