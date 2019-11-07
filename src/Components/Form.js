@@ -1,26 +1,18 @@
 import React from "react";
 
 class Form extends React.PureComponent {
+  disabled() {
+    return !this.props.currency;
+  }
+
   render() {
     return (
       <React.Fragment>
         <form>
-          <div>
+          <div className="form-group">
             <select
               name="select"
-              className="select mb-2"
-              value={this.props.metalChoice}
-              onChange={this.props.handleMetalChange}
-            >
-              <option value="">Choose metal </option>
-              <option value="Gold">Gold</option>
-              <option value="Silver">Silver</option>
-              <option value="Platinum">Platinum</option>
-              <option value="Palladium">Palladium</option>
-            </select>
-            <select
-              name="select"
-              className="select mb-2"
+              className="form-control-lg select mb-3"
               value={this.props.currency}
               onChange={this.props.handleCurrencyChange}
             >
@@ -39,39 +31,59 @@ class Form extends React.PureComponent {
               <option value="SEK">Swedish Krona</option>
               <option value="HUF">Hungarian Forint</option>
             </select>
-          </div>
-          <div className="form-row">
-            <div className="col">
-              <input
-                type="number"
-                placeholder="Enter the amount"
-                id="ozInput"
-                name="amount"
-                className="form-control"
-                value={this.props.amount.toString()}
-                onChange={this.props.handleChange}
-                min="1"
-              />
+
+            <div>
+              <button
+                type="button"
+                className={`btn-lg mb-2 ${
+                  this.disabled() ? "btn-danger disabled" : "btn-success"
+                }`}
+                onClick={this.props.getAPI}
+                disabled={this.disabled()}
+              >
+                Calculate
+              </button>
             </div>
-            <div className="col">
-              <input
-                type="text"
-                placeholder="Enter your weight in pounds"
-                id="userWeight"
-                name="userWeight"
-                className=" form-control"
-                value={this.props.userWeight}
-                onChange={this.props.handleChange}
-              />
+            <div className="row">
+              <div className="col md-4 mb-3">
+                <select
+                  name="select"
+                  className="form-control"
+                  value={this.props.metalChoice}
+                  onChange={this.props.handleMetalChange}
+                >
+                  <option value="">Choose metal </option>
+                  <option value="Gold">Gold</option>
+                  <option value="Silver">Silver</option>
+                  <option value="Platinum">Platinum</option>
+                  <option value="Palladium">Palladium</option>
+                </select>
+              </div>
+              <div className="col md-4 mb-3">
+                <input
+                  type="number"
+                  placeholder="Enter the quantity:"
+                  id="ozInput"
+                  name="amount"
+                  className="form-control"
+                  value={this.props.amount.toString()}
+                  onChange={this.props.handleChange}
+                  min="1"
+                />
+              </div>
+              <div className="col md-4 mb-3">
+                <input
+                  type="text"
+                  placeholder="Your weight in pounds:"
+                  id="userWeight"
+                  name="userWeight"
+                  className="form-control"
+                  value={this.props.userWeight}
+                  onChange={this.props.handleChange}
+                />
+              </div>
             </div>
           </div>
-          <button
-            type="button"
-            className="btn-lg btn-danger mb-2"
-            onClick={this.props.getAPI}
-          >
-            Calculate
-          </button>
         </form>
         <br />
       </React.Fragment>
