@@ -21,7 +21,7 @@ class App extends Component {
       amount: "1",
       userWeight: "150",
       currency: "USD",
-      currencySign: "",
+      currencySign: "$",
       currencySignIsBefore: true
     };
   }
