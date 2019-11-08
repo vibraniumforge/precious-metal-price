@@ -16,10 +16,10 @@ class App extends Component {
         Platinum: 0,
         Palladium: 0
       },
-      metalChoice: "",
-      amount: "",
-      userWeight: "",
-      currency: "",
+      metalChoice: "Gold",
+      amount: "1",
+      userWeight: "150",
+      currency: "USD",
       currencySign: "",
       currencySignIsBefore: true
     };
