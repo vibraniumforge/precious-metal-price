@@ -6,6 +6,7 @@ import { currencySignChooser, signLocator } from "./helpers/currencySign.js";
 const url =
   "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=";
 const REACT_APP_API_KEY = process.env.REACT_APP_API_KEY;
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -48,18 +49,25 @@ class App extends Component {
         Promise.all([res1.json(), res2.json(), res3.json(), res4.json()])
       )
       .then(([res1, res2, res3, res4]) => {
-        let values1 = Object.values(res1);
-        let values12 = Object.values(values1[0]);
-        let gold = parseFloat(values12[4]);
-        let values2 = Object.values(res2);
-        let values22 = Object.values(values2[0]);
-        let silver = parseFloat(values22[4]);
-        let values3 = Object.values(res3);
-        let values32 = Object.values(values3[0]);
-        let platinum = parseFloat(values32[4]);
-        let values4 = Object.values(res4);
-        let values42 = Object.values(values4[0]);
-        let palladium = parseFloat(values42[4]);
+        // let values1 = Object.values(res1);
+        // let values12 = Object.values(values1[0]);
+        // let gold = parseFloat(values12[4]);
+        const gold = parseFloat(
+          res1["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
+          10
+        ).toFixed(2);
+        const silver = parseFloat(
+          res2["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
+          10
+        ).toFixed(2);
+        const platinum = parseFloat(
+          res3["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
+          10
+        ).toFixed(2);
+        const palladium = parseFloat(
+          res4["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
+          10
+        ).toFixed(2);
         this.setState({
           price: {
             Gold: parseFloat(gold),
