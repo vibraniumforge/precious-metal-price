@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ResultCards from "./Components/ResultCards";
+import ResultCards from "./Components/ResultCards.js";
 import Form from "./Components/Form";
 import { currencySignChooser, signLocator } from "./helpers/currencySign.js";
 
