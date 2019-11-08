@@ -2,21 +2,19 @@ import React from "react";
 
 class Form extends React.PureComponent {
   state = {
-    secondsRemaining: 10,
+    secondsRemaining: 60,
     buttonReady: true
   };
 
   componentDidUpdate() {
     if (this.state.secondsRemaining === 0) {
-      this.setState({ buttonReady: true, secondsRemaining: 10 }, () =>
-        console.log(this.state)
-      );
+      this.setState({ buttonReady: true, secondsRemaining: 60 });
       this.stopTimer();
     }
   }
 
   isButtonReady = () => {
-    this.setState({ buttonReady: false }, () => console.log(this.state));
+    this.setState({ buttonReady: false });
     this.timer = setInterval(
       () =>
         this.setState(prevState => ({
@@ -30,13 +28,7 @@ class Form extends React.PureComponent {
     clearInterval(this.timer);
   }
 
-  resetButtonTime = () => {
-    this.setState({ buttonReady: true }, () => console.log(this.state));
-  };
-
   render() {
-    // console.log(this.state);
-    // console.log(this.props);
     return (
       <React.Fragment>
         <form>
@@ -70,8 +62,7 @@ class Form extends React.PureComponent {
                     ? "btn-success"
                     : "btn-danger disabled"
                 }`}
-                // onClick={(this.props.getAPI, () => this.isButtonReady())}
-                onClick={() => this.isButtonReady()}
+                onClick={(this.props.getAPI, () => this.isButtonReady())}
                 disabled={!this.props.currency || !this.state.buttonReady}
               >
                 {this.state.buttonReady
