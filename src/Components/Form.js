@@ -62,7 +62,10 @@ class Form extends React.PureComponent {
                     ? "btn-success"
                     : "btn-danger disabled"
                 }`}
-                onClick={(this.props.getAPI, () => this.isButtonReady())}
+                onClick={() => {
+                  this.props.getAPI();
+                  this.isButtonReady();
+                }}
                 disabled={!this.props.currency || !this.state.buttonReady}
               >
                 {this.state.buttonReady
