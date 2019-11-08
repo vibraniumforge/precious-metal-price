@@ -2,22 +2,41 @@ import React from "react";
 
 class Form extends React.PureComponent {
   state = {
+    secondsRemaining: 10,
     buttonReady: true
   };
 
+  componentDidUpdate() {
+    if (this.state.secondsRemaining === 0) {
+      this.setState({ buttonReady: true, secondsRemaining: 10 }, () =>
+        console.log(this.state)
+      );
+      this.stopTimer();
+    }
+  }
+
   isButtonReady = () => {
-    console.log("isButtonReady fires");
     this.setState({ buttonReady: false }, () => console.log(this.state));
-    setTimeout(this.resetButtonTime, 60000);
+    this.timer = setInterval(
+      () =>
+        this.setState(prevState => ({
+          secondsRemaining: prevState.secondsRemaining - 1
+        })),
+      1000
+    );
   };
+
+  stopTimer() {
+    clearInterval(this.timer);
+  }
 
   resetButtonTime = () => {
     this.setState({ buttonReady: true }, () => console.log(this.state));
   };
 
   render() {
-    console.log(this.state);
-    console.log(this.props);
+    // console.log(this.state);
+    // console.log(this.props);
     return (
       <React.Fragment>
         <form>
@@ -48,14 +67,16 @@ class Form extends React.PureComponent {
                 type="button"
                 className={`btn-lg mb-2 ${
                   this.props.currency && this.state.buttonReady
-                    ? "btn-success disabled"
+                    ? "btn-success"
                     : "btn-danger disabled"
                 }`}
                 // onClick={(this.props.getAPI, () => this.isButtonReady())}
                 onClick={() => this.isButtonReady()}
                 disabled={!this.props.currency || !this.state.buttonReady}
               >
-                Calculate
+                {this.state.buttonReady
+                  ? "Calculate"
+                  : this.state.secondsRemaining}
               </button>
               <br></br>
               <p>Maximum of once per minute</p>
