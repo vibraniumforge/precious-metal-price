@@ -41,18 +41,18 @@ class Form extends React.PureComponent {
             >
               {" "}
               <option value="">Choose currency</option>
-              <option value="USD">U.S. Dollar</option>
-              <option value="EUR">Euro</option>
-              <option value="GBP">British Pound</option>
-              <option value="AUD">Australian Dollar</option>
-              <option value="CAD">Canadian Dollar</option>
-              <option value="JPY">Japanese Yen</option>
-              <option value="CNY">Chinese Yuan Renambi</option>
-              <option value="KRW">Korean Won</option>
-              <option value="BRL">Brazilian Real</option>
-              <option value="CHF">Swiss Franc</option>
-              <option value="SEK">Swedish Krona</option>
-              <option value="HUF">Hungarian Forint</option>
+              <option value="USD">U.S. Dollar $</option>
+              <option value="EUR">Euro €</option>
+              <option value="GBP">British Pound £</option>
+              <option value="AUD">Australian Dollar AU$</option>
+              <option value="CAD">Canadian Dollar C$</option>
+              <option value="JPY">Japanese Yen ¥</option>
+              <option value="CNY">Chinese Yuan Renambi CN¥</option>
+              <option value="KRW">Korean Won ₩</option>
+              <option value="BRL">Brazilian Real R$</option>
+              <option value="CHF">Swiss Franc Fr.</option>
+              <option value="SEK">Swedish Krona kr</option>
+              <option value="HUF">Hungarian Forint Ft</option>
             </select>
             <div>
               <button
