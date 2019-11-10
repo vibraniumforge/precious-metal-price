@@ -13,7 +13,7 @@ const currencySignChooser = e => {
     SEK: "kr",
     HUF: "Ft"
   };
-  const currencySign = e.target.value;
+  const currencySign = e.target.value === "" ? "$" : e.target.value;
   return currencyList.hasOwnProperty(currencySign)
     ? currencyList[currencySign]
     : "";
