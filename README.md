@@ -22,3 +22,5 @@ User weight = It depends
 1 Imperial Ton = 32666.667 Troy Ounces
 
 Please be forewarned that the API is a free account, and that it only allows 5 calls per minute or 500 calls per day!
+
+Use it on GitPages: https://vibraniumforge.github.io/precious-metal-price/
