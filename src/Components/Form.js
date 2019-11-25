@@ -33,6 +33,7 @@ class Form extends React.PureComponent {
       <React.Fragment>
         <form>
           <div className="form-group">
+            <p>1. Choose a currency:</p>
             <select
               name="select"
               className="form-control-lg select mb-3"
@@ -55,6 +56,8 @@ class Form extends React.PureComponent {
               <option value="HUF">Hungarian Forint Ft</option>
             </select>
             <div>
+              <p>2. Then push calculate</p>
+              <p>(Maximum of once per minute per the API.)</p>
               <button
                 type="button"
                 className={`btn-lg mb-2 ${
@@ -73,7 +76,8 @@ class Form extends React.PureComponent {
                   : this.state.secondsRemaining}
               </button>
               <br></br>
-              <p>Maximum of once per minute</p>
+
+              <p>3. Do all the conversions you want!</p>
             </div>
             <div className="row">
               <div className="col md-4 mb-3">
