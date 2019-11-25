@@ -10,6 +10,15 @@ class ResultCards extends React.PureComponent {
     return (
       <React.Fragment>
         <div id="output">
+          <OtherCard
+            price={this.props.price}
+            metalChoice={this.props.metalChoice}
+            amount={this.props.amount}
+            userWeight={this.props.userWeight}
+            currency={this.props.currency}
+            currencySign={this.props.currencySign}
+            currencySignIsBefore={this.props.currencySignIsBefore}
+          />
           <USCard
             price={this.props.price}
             metalChoice={this.props.metalChoice}
@@ -29,15 +38,6 @@ class ResultCards extends React.PureComponent {
             currencySignIsBefore={this.props.currencySignIsBefore}
           />
           <MetricCard
-            price={this.props.price}
-            metalChoice={this.props.metalChoice}
-            amount={this.props.amount}
-            userWeight={this.props.userWeight}
-            currency={this.props.currency}
-            currencySign={this.props.currencySign}
-            currencySignIsBefore={this.props.currencySignIsBefore}
-          />
-          <OtherCard
             price={this.props.price}
             metalChoice={this.props.metalChoice}
             amount={this.props.amount}
