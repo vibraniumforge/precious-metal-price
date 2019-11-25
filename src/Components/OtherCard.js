@@ -97,7 +97,7 @@ class OtherCard extends React.PureComponent {
           <div className="card-block" id="ratio">
             <span>
               <h4>
-                Ratio of Gold to Silver:{" "}
+                Ratio of Silver to Gold:{" "}
                 {this.props.price.Gold
                   ? `${(
                       this.props.price.Gold / this.props.price.Silver
