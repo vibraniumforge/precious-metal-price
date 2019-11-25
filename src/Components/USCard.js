@@ -9,6 +9,7 @@ class USCard extends React.PureComponent {
             <h4>
               {this.props.metalChoice} Price per{" "}
               {this.props.amount !== 1 ? this.props.amount : ""} U.S. Ounce
+              (1/16 pound)
               {this.props.amount > 1 ? "s" : ""} in {this.props.currency}:{" "}
               <span className="number">
                 {this.props.currencySignIsBefore === true
