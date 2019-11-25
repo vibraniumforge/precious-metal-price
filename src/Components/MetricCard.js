@@ -18,7 +18,7 @@ class MetricCard extends React.PureComponent {
                   ? (
                       this.props.price[this.props.metalChoice] *
                       this.props.amount *
-                      0.032
+                      0.03215
                     )
                       .toFixed(2)
                       .toString()
