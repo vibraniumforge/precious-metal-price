@@ -52,14 +52,18 @@ class App extends Component {
         // let values1 = Object.values(res1);
         // let values12 = Object.values(values1[0]);
         // let gold = parseFloat(values12[4]);
-        const gold = parseFloat(
-          res1["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
-          10
-        ).toFixed(2);
-        const silver = parseFloat(
-          res2["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
-          10
-        ).toFixed(2);
+        const gold = res1["Realtime Currency Exchange Rate"]
+          ? parseFloat(
+              res1["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
+              10
+            ).toFixed(2)
+          : "Error";
+        const silver = res1["Realtime Currency Exchange Rate"]
+          ? parseFloat(
+              res2["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
+              10
+            ).toFixed(2)
+          : "Error";
         const platinum = parseFloat(
           res3["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
           10
