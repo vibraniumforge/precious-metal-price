@@ -4,7 +4,7 @@ class UKCard extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
-        <div className="card bg-secondary mb-2">
+        <div className="card bg-danger mb-2">
           <div className="card-block" id="stoneOutput">
             <h4>
               {this.props.metalChoice} Price per{" "}
@@ -32,7 +32,7 @@ class UKCard extends React.PureComponent {
           </div>
         </div>
 
-        <div className="card bg-secondary mb-2">
+        <div className="card bg-danger mb-2">
           <div className="card-block" id="imperialTonOutput">
             <h4>
               {this.props.metalChoice} Price per{" "}
