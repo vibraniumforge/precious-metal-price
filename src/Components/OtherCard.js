@@ -5,6 +5,34 @@ class OtherCard extends React.PureComponent {
     return (
       <React.Fragment>
         <div className="card bg-warning mb-2">
+          <div className="card-block" id="quarterTroyOzOutput">
+            <h4>
+              {this.props.metalChoice} Price per{" "}
+              {this.props.amount !== 1 ? this.props.amount : ""} 1/4 Troy Ounce
+              {this.props.amount > 1 ? "s" : ""} in {this.props.currency}:{" "}
+              <span className="number">
+                {this.props.currencySignIsBefore === true
+                  ? this.props.currencySign
+                  : ""}
+                {this.props.price[this.props.metalChoice]
+                  ? (
+                      this.props.price[this.props.metalChoice] *
+                      0.25 *
+                      this.props.amount *
+                      1
+                    )
+                      .toFixed(2)
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  : ""}{" "}
+                {this.props.currencySignIsBefore === false
+                  ? this.props.currencySign
+                  : ""}
+              </span>
+            </h4>
+          </div>
+        </div>
+        <div className="card bg-warning mb-2">
           <div className="card-block" id="troyOzOutput">
             <h4>
               {this.props.metalChoice} Price per{" "}
