@@ -29,8 +29,12 @@ class OtherCard extends React.PureComponent {
     }
   };
 
-  isGoldOrSilver = () => {
-    return ["Gold", "Silver"].includes(this.props.metalChoice);
+  substituteSilver = () => {
+    if (this.props.metalChoice === "Gold") {
+      return "Silver";
+    } else {
+      return `${this.props.metalChoice}`;
+    }
   };
 
   render() {
@@ -149,23 +153,15 @@ class OtherCard extends React.PureComponent {
             </span>
           </div>
         </div>
-        <div className="card bg-warning mb-2">
+        <div className="card bg-secondary mb-2">
           <div className="card-block" id="ratio">
             <span>
               <h4>
-                {this.isGoldOrSilver()}
-                Ratio of Silver to Gold:
+                Ratio of {this.substituteSilver()} to Gold:{" "}
                 {this.props.price.Gold
                   ? `${(
-                      this.props.price.Gold / this.props.price.Silver
-                    ).toFixed(2)} to 1`
-                  : ""}{" "}
-                {this.props.metalChoice !== "Gold" ||
-                  this.props.metalChoice !== "Silver"}{" "}
-                Ratio of {this.props.metalChoice} to Gold:
-                {this.props.price.Gold
-                  ? `${(
-                      this.props.price.Gold / this.props.price.Silver
+                      this.props.price.Gold /
+                      this.props.price[this.substituteSilver()]
                     ).toFixed(2)} to 1`
                   : ""}{" "}
               </h4>
