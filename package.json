@@ -2,6 +2,7 @@
   "name": "precious-metal-price",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/vibraniumforge/precious-metal-price",
   "dependencies": {
     "dotenv-webpack": "^1.7.0",
     "ghpages": "0.0.10",
