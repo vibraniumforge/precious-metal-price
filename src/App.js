@@ -14,8 +14,6 @@ class App extends Component {
       price: {
         Gold: 0,
         Silver: 0,
-        // Platinum: 0,
-        // Palladium: 0,
       },
       metalChoice: "Gold",
       amount: "1",
@@ -38,17 +36,9 @@ class App extends Component {
       fetch(
         `${url}XAG&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`
       ),
-      //   fetch(
-      //     `${url}XPT&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`
-      //   ),
-      //   fetch(
-      //     `${url}XPD&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`
-      //   ),
     ])
-      .then(([res1, res2, res3, res4]) =>
-        Promise.all([res1.json(), res2.json(), res3.json(), res4.json()])
-      )
-      .then(([res1, res2, res3, res4]) => {
+      .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+      .then(([res1, res2]) => {
         // let values1 = Object.values(res1);
         // let values12 = Object.values(values1[0]);
         // let gold = parseFloat(values12[4]);
@@ -64,20 +54,10 @@ class App extends Component {
               10
             ).toFixed(2)
           : "Error";
-        // const platinum = parseFloat(
-        //   res3["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
-        //   10
-        // ).toFixed(2);
-        // const palladium = parseFloat(
-        //   res4["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
-        //   10
-        // ).toFixed(2);
         this.setState({
           price: {
             Gold: parseFloat(gold),
             Silver: parseFloat(silver),
-            // Platinum: parseFloat(platinum),
-            // Palladium: parseFloat(palladium),
           },
         });
       })

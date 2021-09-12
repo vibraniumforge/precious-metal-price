@@ -3,7 +3,7 @@ import React from "react";
 class Form extends React.PureComponent {
   state = {
     secondsRemaining: 60,
-    buttonReady: true
+    buttonReady: true,
   };
 
   componentDidUpdate() {
@@ -17,8 +17,8 @@ class Form extends React.PureComponent {
     this.setState({ buttonReady: false });
     this.timer = setInterval(
       () =>
-        this.setState(prevState => ({
-          secondsRemaining: prevState.secondsRemaining - 1
+        this.setState((prevState) => ({
+          secondsRemaining: prevState.secondsRemaining - 1,
         })),
       1000
     );
@@ -90,8 +90,6 @@ class Form extends React.PureComponent {
                   <option value="">Choose metal </option>
                   <option value="Gold">Gold</option>
                   <option value="Silver">Silver</option>
-                  <option value="Platinum">Platinum</option>
-                  <option value="Palladium">Palladium</option>
                 </select>
               </div>
               <div className="col md-4 mb-3">

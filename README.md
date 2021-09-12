@@ -2,7 +2,7 @@ This app converts the price and amount of a precious metal into other units of m
 
 It uses React.js and Bootstrap 4.
 
-The precious metals are: Gold, Silver, Platinum, and Palladium.
+The precious metals are gold and silver.
 
 The currencies are: U.S. Dollar, E.U. Euro, British Pound, Australian Dollar, Canadian Dollar, Japanese Yen, Chinese Yuan, Korean Won, Brazilian Real, Swiss Franc, Swedish Krona, and Hungarian Forint.
 
