@@ -14,15 +14,15 @@ class App extends Component {
       price: {
         Gold: 0,
         Silver: 0,
-        Platinum: 0,
-        Palladium: 0
+        // Platinum: 0,
+        // Palladium: 0,
       },
       metalChoice: "Gold",
       amount: "1",
       userWeight: "150",
       currency: "USD",
       currencySign: "$",
-      currencySignIsBefore: true
+      currencySignIsBefore: true,
     };
   }
 
@@ -38,12 +38,12 @@ class App extends Component {
       fetch(
         `${url}XAG&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`
       ),
-      fetch(
-        `${url}XPT&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`
-      ),
-      fetch(
-        `${url}XPD&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`
-      )
+      //   fetch(
+      //     `${url}XPT&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`
+      //   ),
+      //   fetch(
+      //     `${url}XPD&to_currency=${this.state.currency}&apikey=${REACT_APP_API_KEY}`
+      //   ),
     ])
       .then(([res1, res2, res3, res4]) =>
         Promise.all([res1.json(), res2.json(), res3.json(), res4.json()])
@@ -64,27 +64,27 @@ class App extends Component {
               10
             ).toFixed(2)
           : "Error";
-        const platinum = parseFloat(
-          res3["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
-          10
-        ).toFixed(2);
-        const palladium = parseFloat(
-          res4["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
-          10
-        ).toFixed(2);
+        // const platinum = parseFloat(
+        //   res3["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
+        //   10
+        // ).toFixed(2);
+        // const palladium = parseFloat(
+        //   res4["Realtime Currency Exchange Rate"]["5. Exchange Rate"],
+        //   10
+        // ).toFixed(2);
         this.setState({
           price: {
             Gold: parseFloat(gold),
             Silver: parseFloat(silver),
-            Platinum: parseFloat(platinum),
-            Palladium: parseFloat(palladium)
-          }
+            // Platinum: parseFloat(platinum),
+            // Palladium: parseFloat(palladium),
+          },
         });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     if (e.target.value) {
       this.setState({ [e.target.name]: parseInt(e.target.value, 10) });
     } else {
@@ -92,15 +92,15 @@ class App extends Component {
     }
   };
 
-  handleMetalChange = e => {
+  handleMetalChange = (e) => {
     this.setState({ metalChoice: e.target.value }, this.changeBackground);
   };
 
-  handleCurrencyChange = e => {
+  handleCurrencyChange = (e) => {
     this.setState({
       currency: e.target.value,
       currencySign: currencySignChooser(e),
-      currencySignIsBefore: signLocator(e)
+      currencySignIsBefore: signLocator(e),
     });
   };
 
